@@ -2,7 +2,7 @@
 EAS 510 - Digital Forensics Detective
 """
 import os
-from rules import rule1_metadata, rule2_histogram
+from rules import rule1_metadata, rule2_histogram, rule3_template
 
 class SimpleDetective:
     """An expert system that matches modified images to originals."""
@@ -39,15 +39,18 @@ class SimpleDetective:
             # Apply Rule 2: Histogram
             score2, fired2, evidence2 = rule2_histogram(target_info, input_image_path)
 
+            #Apply Rule 3: Template
+            score3, fired3, evidence3 = rule3_template(target_info, input_image_path)
+
             # Combine scores
-            total_score = score1 + score2
-            max_possible = 30 + 35  # Rule 1 max + Rule 2 max
+            total_score = score1 + score2 + score3
+            max_possible = 30 + 30 + 40  # Rule 1 max + Rule 2 max + Rule 3 max
 
             results.append({
                 'target': target_name,
                 'score': total_score,
                 'max_score': max_possible,
-                'rules': [(fired1, evidence1, score1), (fired2, evidence2, score2)]
+                'rules': [(fired1, evidence1, score1), (fired2, evidence2, score2), (fired3, evidence3, score3)]
             })
 
         # Sort by score, highest first
@@ -56,7 +59,8 @@ class SimpleDetective:
 
         # Print rule details for best match
         print(f"  Rule 1 (Metadata):  {best['rules'][0][1]} -> {best['rules'][0][2]}/30")
-        print(f"  Rule 2 (Histogram): {best['rules'][1][1]} -> {best['rules'][1][2]}/35")
+        print(f"  Rule 2 (Histogram): {best['rules'][1][1]} -> {best['rules'][1][2]}/30")
+        print(f"  Rule 3 (Template):  {best['rules'][2][1]} -> {best['rules'][2][2]}/40")
 
         # Decision threshold: need at least 25% of max score
         threshold = best['max_score'] * 0.25
@@ -82,6 +86,10 @@ if __name__ == "__main__":
     test_images = [
         "modified_images/modified_00_bright_enhanced.jpg",
         "modified_images/modified_03_compressed.jpg",
+        "modified_images/modified_00_crop_75pct.jpg",
+        "modified_images/modified_08_crop_75pct.jpg",
+        "modified_images/modified_07_format_png.png",
+        "random/random_noise_01.jpg",
     ]
 
     for img in test_images:
