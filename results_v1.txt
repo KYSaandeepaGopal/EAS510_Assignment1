@@ -1,0 +1,477 @@
+Loading targets from: originals
+  Registered: original_00.jpg (2000565 bytes)
+  Registered: original_01.jpg (2039857 bytes)
+  Registered: original_09.jpg (451428 bytes)
+  Registered: original_07.jpg (801554 bytes)
+  Registered: original_08.jpg (3033659 bytes)
+  Registered: original_04.jpg (3314524 bytes)
+  Registered: original_03.jpg (2051249 bytes)
+  Registered: original_02.jpg (4152041 bytes)
+  Registered: original_05.jpg (2439626 bytes)
+  Registered: original_06.jpg (2264554 bytes)
+Total targets: 10
+
+============================================================
+EVALUATING MODIFIED IMAGES
+============================================================
+
+Processing: modified_00_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.97, Dims 3531x2433 vs 3531x2433 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.951 -> 28/30
+  Rule 3 (Template):  Match score 0.99 -> 39/40
+Final: 96/100 -> MATCH to original_00.jpg
+
+Processing: modified_00_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.34, Dims 3531x2433 vs 3531x2433 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_00.jpg
+
+Processing: modified_00_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.08, Dims 882x608 vs 3531x2433 (sim 0.25), AR sim 1.00 -> 6/30
+  Rule 2 (Histogram): Histogram correlation 0.270 -> 8/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 53/100 -> MATCH to original_00.jpg
+
+Processing: modified_00_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.30, Dims 1765x1216 vs 3531x2433 (sim 0.50), AR sim 1.00 -> 12/30
+  Rule 2 (Histogram): Histogram correlation 0.726 -> 21/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 72/100 -> MATCH to original_00.jpg
+
+Processing: modified_00_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.64, Dims 2648x1824 vs 3531x2433 (sim 0.75), AR sim 1.00 -> 20/30
+  Rule 2 (Histogram): Histogram correlation 0.914 -> 27/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 86/100 -> MATCH to original_00.jpg
+
+Processing: modified_00_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.14, Dims 3531x2433 vs 3531x2433 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_00.jpg
+
+Processing: modified_01_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.96, Dims 4000x6000 vs 4000x6000 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation -0.017 -> 0/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 68/100 -> MATCH to original_01.jpg
+
+Processing: modified_01_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.36, Dims 4000x6000 vs 4000x6000 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_01.jpg
+
+Processing: modified_01_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.13, Dims 1000x1500 vs 4000x6000 (sim 0.25), AR sim 1.00 -> 9/30
+  Rule 2 (Histogram): Histogram correlation 0.726 -> 21/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 69/100 -> MATCH to original_01.jpg
+
+Processing: modified_01_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.35, Dims 2000x3000 vs 4000x6000 (sim 0.50), AR sim 1.00 -> 15/30
+  Rule 2 (Histogram): Histogram correlation 0.989 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 83/100 -> MATCH to original_01.jpg
+
+Processing: modified_01_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.72, Dims 3000x4500 vs 4000x6000 (sim 0.75), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 0.993 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_01.jpg
+
+Processing: modified_01_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.12, Dims 4000x6000 vs 4000x6000 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_01.jpg
+
+Processing: modified_02_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.99, Dims 4672x7008 vs 4672x7008 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.746 -> 22/30
+  Rule 3 (Template):  Match score 0.99 -> 39/40
+Final: 90/100 -> MATCH to original_02.jpg
+
+Processing: modified_02_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.41, Dims 4672x7008 vs 4672x7008 (sim 1.00), AR sim 1.00 -> 24/30
+  Rule 2 (Histogram): Histogram correlation 0.999 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 92/100 -> MATCH to original_02.jpg
+
+Processing: modified_02_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.06, Dims 1168x1752 vs 4672x7008 (sim 0.25), AR sim 1.00 -> 8/30
+  Rule 2 (Histogram): Histogram correlation 0.714 -> 21/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 68/100 -> MATCH to original_02.jpg
+
+Processing: modified_02_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.22, Dims 2336x3504 vs 4672x7008 (sim 0.50), AR sim 1.00 -> 14/30
+  Rule 2 (Histogram): Histogram correlation 0.871 -> 26/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 79/100 -> MATCH to original_02.jpg
+
+Processing: modified_02_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.58, Dims 3504x5256 vs 4672x7008 (sim 0.75), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 0.957 -> 28/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 88/100 -> MATCH to original_02.jpg
+
+Processing: modified_02_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.15, Dims 4672x7008 vs 4672x7008 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_02.jpg
+
+Processing: modified_03_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.95, Dims 3283x4596 vs 3283x4596 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.631 -> 18/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 86/100 -> MATCH to original_03.jpg
+
+Processing: modified_03_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.30, Dims 3283x4596 vs 3283x4596 (sim 1.00), AR sim 1.00 -> 22/30
+  Rule 2 (Histogram): Histogram correlation 0.998 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_03.jpg
+
+Processing: modified_03_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.07, Dims 820x1149 vs 4000x6000 (sim 0.20), AR sim 0.93 -> 6/30
+  Rule 2 (Histogram): Histogram correlation 0.857 -> 25/30
+  Rule 3 (Template):  Match score 0.68 -> 27/40
+Final: 58/100 -> MATCH to original_01.jpg
+
+Processing: modified_03_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.30, Dims 1641x2298 vs 3283x4596 (sim 0.50), AR sim 1.00 -> 13/30
+  Rule 2 (Histogram): Histogram correlation 0.597 -> 17/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 69/100 -> MATCH to original_03.jpg
+
+Processing: modified_03_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.63, Dims 2462x3447 vs 3283x4596 (sim 0.75), AR sim 1.00 -> 20/30
+  Rule 2 (Histogram): Histogram correlation 0.880 -> 26/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 85/100 -> MATCH to original_03.jpg
+
+Processing: modified_03_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.13, Dims 3283x4596 vs 3283x4596 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_03.jpg
+
+Processing: modified_04_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.96, Dims 4160x6240 vs 4160x6240 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.999 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 97/100 -> MATCH to original_04.jpg
+
+Processing: modified_04_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.39, Dims 4160x6240 vs 4160x6240 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_04.jpg
+
+Processing: modified_04_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.07, Dims 1040x1560 vs 4160x6240 (sim 0.25), AR sim 1.00 -> 8/30
+  Rule 2 (Histogram): Histogram correlation 0.999 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 76/100 -> MATCH to original_04.jpg
+
+Processing: modified_04_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.33, Dims 2080x3120 vs 4160x6240 (sim 0.50), AR sim 1.00 -> 15/30
+  Rule 2 (Histogram): Histogram correlation 0.998 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 83/100 -> MATCH to original_04.jpg
+
+Processing: modified_04_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.72, Dims 3120x4680 vs 4160x6240 (sim 0.75), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 0.999 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_04.jpg
+
+Processing: modified_04_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.15, Dims 4160x6240 vs 4160x6240 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_04.jpg
+
+Processing: modified_05_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.95, Dims 5062x3127 vs 5062x3127 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation -0.016 -> 0/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 68/100 -> MATCH to original_05.jpg
+
+Processing: modified_05_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.34, Dims 5062x3127 vs 5062x3127 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 0.999 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_05.jpg
+
+Processing: modified_05_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.09, Dims 1265x781 vs 5062x3127 (sim 0.25), AR sim 1.00 -> 6/30
+  Rule 2 (Histogram): Histogram correlation -0.026 -> 0/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 45/100 -> MATCH to original_05.jpg
+
+Processing: modified_05_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.32, Dims 2531x1563 vs 5062x3127 (sim 0.50), AR sim 1.00 -> 13/30
+  Rule 2 (Histogram): Histogram correlation 0.662 -> 19/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 71/100 -> MATCH to original_05.jpg
+
+Processing: modified_05_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.65, Dims 3796x2345 vs 5062x3127 (sim 0.75), AR sim 1.00 -> 20/30
+  Rule 2 (Histogram): Histogram correlation 0.962 -> 28/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 87/100 -> MATCH to original_05.jpg
+
+Processing: modified_05_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.12, Dims 5062x3127 vs 5062x3127 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_05.jpg
+
+Processing: modified_06_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.95, Dims 6239x3510 vs 6239x3510 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.997 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 97/100 -> MATCH to original_06.jpg
+
+Processing: modified_06_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.36, Dims 6239x3510 vs 6239x3510 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_06.jpg
+
+Processing: modified_06_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.07, Dims 1559x877 vs 6239x3510 (sim 0.25), AR sim 1.00 -> 6/30
+  Rule 2 (Histogram): Histogram correlation 0.984 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 74/100 -> MATCH to original_06.jpg
+
+Processing: modified_06_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.30, Dims 3119x1755 vs 6239x3510 (sim 0.50), AR sim 1.00 -> 12/30
+  Rule 2 (Histogram): Histogram correlation 0.983 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 80/100 -> MATCH to original_06.jpg
+
+Processing: modified_06_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.66, Dims 4679x2632 vs 6239x3510 (sim 0.75), AR sim 1.00 -> 20/30
+  Rule 2 (Histogram): Histogram correlation 0.996 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 88/100 -> MATCH to original_06.jpg
+
+Processing: modified_06_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.13, Dims 6239x3510 vs 6239x3510 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_06.jpg
+
+Processing: modified_07_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.98, Dims 3570x2380 vs 3570x2380 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.248 -> 7/30
+  Rule 3 (Template):  Match score 0.99 -> 39/40
+Final: 75/100 -> MATCH to original_07.jpg
+
+Processing: modified_07_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.36, Dims 3570x2380 vs 3570x2380 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 0.999 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 91/100 -> MATCH to original_07.jpg
+
+Processing: modified_07_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.09, Dims 892x595 vs 3570x2380 (sim 0.25), AR sim 1.00 -> 6/30
+  Rule 2 (Histogram): Histogram correlation 0.895 -> 26/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 71/100 -> MATCH to original_07.jpg
+
+Processing: modified_07_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.33, Dims 1785x1190 vs 3570x2380 (sim 0.50), AR sim 1.00 -> 15/30
+  Rule 2 (Histogram): Histogram correlation 0.915 -> 27/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 81/100 -> MATCH to original_07.jpg
+
+Processing: modified_07_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.67, Dims 2677x1785 vs 3570x2380 (sim 0.75), AR sim 1.00 -> 20/30
+  Rule 2 (Histogram): Histogram correlation 0.959 -> 28/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 87/100 -> MATCH to original_07.jpg
+
+Processing: modified_07_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.18, Dims 3570x2380 vs 3570x2380 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_07.jpg
+
+Processing: modified_08_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.98, Dims 4000x6000 vs 4000x6000 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation -0.058 -> 0/30
+  Rule 3 (Template):  Match score 0.99 -> 39/40
+Final: 68/100 -> MATCH to original_08.jpg
+
+Processing: modified_08_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.41, Dims 4000x6000 vs 4000x6000 (sim 1.00), AR sim 1.00 -> 24/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 92/100 -> MATCH to original_08.jpg
+
+Processing: modified_08_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.10, Dims 1000x1500 vs 4000x6000 (sim 0.25), AR sim 1.00 -> 9/30
+  Rule 2 (Histogram): Histogram correlation -0.156 -> 0/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 48/100 -> MATCH to original_08.jpg
+
+Processing: modified_08_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.38, Dims 2000x3000 vs 4000x6000 (sim 0.50), AR sim 1.00 -> 15/30
+  Rule 2 (Histogram): Histogram correlation 0.524 -> 15/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 69/100 -> MATCH to original_08.jpg
+
+Processing: modified_08_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.75, Dims 3000x4500 vs 4000x6000 (sim 0.75), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation 0.922 -> 27/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 89/100 -> MATCH to original_08.jpg
+
+Processing: modified_08_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.13, Dims 4000x6000 vs 4000x6000 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_08.jpg
+
+Processing: modified_09_bright_enhanced.jpg
+  Rule 1 (Metadata):  Size ratio 0.96, Dims 2000x3000 vs 2000x3000 (sim 1.00), AR sim 1.00 -> 29/30
+  Rule 2 (Histogram): Histogram correlation 0.158 -> 4/30
+  Rule 3 (Template):  Match score 0.99 -> 39/40
+Final: 72/100 -> MATCH to original_09.jpg
+
+Processing: modified_09_compressed.jpg
+  Rule 1 (Metadata):  Size ratio 0.30, Dims 2000x3000 vs 2000x3000 (sim 1.00), AR sim 1.00 -> 22/30
+  Rule 2 (Histogram): Histogram correlation 0.994 -> 29/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_09.jpg
+
+Processing: modified_09_crop_25pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.08, Dims 500x750 vs 2000x3000 (sim 0.25), AR sim 1.00 -> 8/30
+  Rule 2 (Histogram): Histogram correlation 0.513 -> 15/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 62/100 -> MATCH to original_09.jpg
+
+Processing: modified_09_crop_50pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.30, Dims 1000x1500 vs 2000x3000 (sim 0.50), AR sim 1.00 -> 15/30
+  Rule 2 (Histogram): Histogram correlation 0.735 -> 22/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 76/100 -> MATCH to original_09.jpg
+
+Processing: modified_09_crop_75pct.jpg
+  Rule 1 (Metadata):  Size ratio 0.70, Dims 1500x2250 vs 2000x3000 (sim 0.75), AR sim 1.00 -> 22/30
+  Rule 2 (Histogram): Histogram correlation 0.844 -> 25/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 86/100 -> MATCH to original_09.jpg
+
+Processing: modified_09_format_png.png
+  Rule 1 (Metadata):  Size ratio 0.12, Dims 2000x3000 vs 2000x3000 (sim 1.00), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation 1.000 -> 30/30
+  Rule 3 (Template):  Match score 1.00 -> 39/40
+Final: 90/100 -> MATCH to original_09.jpg
+
+============================================================
+EVALUATING RANDOM IMAGES
+============================================================
+
+Processing: random_05.jpg
+  Rule 1 (Metadata):  Size ratio 0.32, Dims 3000x2000 vs 3570x2380 (sim 0.84), AR sim 1.00 -> 20/30
+  Rule 2 (Histogram): Histogram correlation -0.067 -> 0/30
+  Rule 3 (Template):  Match score 0.03 -> 1/40
+Final: 21/100 -> REJECTED
+
+Processing: random_06.jpg
+  Rule 1 (Metadata):  Size ratio 0.57, Dims 2500x3500 vs 2000x3000 (sim 0.83), AR sim 0.93 -> 21/30
+  Rule 2 (Histogram): Histogram correlation -0.166 -> 0/30
+  Rule 3 (Template):  Match score 0.22 -> 8/40
+Final: 29/100 -> REJECTED
+
+Processing: random_07.jpg
+  Rule 1 (Metadata):  Size ratio 0.79, Dims 4000x3000 vs 2000x3000 (sim 0.75), AR sim 0.50 -> 21/30
+  Rule 2 (Histogram): Histogram correlation -0.128 -> 0/30
+  Rule 3 (Template):  Match score 0.06 -> 2/40
+Final: 23/100 -> REJECTED
+
+Processing: random_08.jpg
+  Rule 1 (Metadata):  Size ratio 0.04, Dims 3200x2400 vs 4672x7008 (sim 0.51), AR sim 0.50 -> 10/30
+  Rule 2 (Histogram): Histogram correlation -0.277 -> 0/30
+  Rule 3 (Template):  Match score 0.53 -> 21/40
+Final: 31/100 -> REJECTED
+
+Processing: random_09.jpg
+  Rule 1 (Metadata):  Size ratio 0.69, Dims 2800x4200 vs 2000x3000 (sim 0.71), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation -0.122 -> 0/30
+  Rule 3 (Template):  Match score 0.03 -> 1/40
+Final: 22/100 -> REJECTED
+
+Processing: random_10.jpg
+  Rule 1 (Metadata):  Size ratio 0.40, Dims 3500x2500 vs 3570x2380 (sim 0.97), AR sim 0.93 -> 22/30
+  Rule 2 (Histogram): Histogram correlation -0.061 -> 0/30
+  Rule 3 (Template):  No valid containment -> 0/40
+Final: 22/100 -> REJECTED
+
+Processing: random_11.jpg
+  Rule 1 (Metadata):  Size ratio 0.39, Dims 2000x3000 vs 2000x3000 (sim 1.00), AR sim 1.00 -> 23/30
+  Rule 2 (Histogram): Histogram correlation -0.227 -> 0/30
+  Rule 3 (Template):  Match score 0.31 -> 12/40
+Final: 35/100 -> REJECTED
+
+Processing: random_12.jpg
+  Rule 1 (Metadata):  Size ratio 0.50, Dims 4500x3000 vs 3570x2380 (sim 0.79), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation -0.053 -> 0/30
+  Rule 3 (Template):  Match score 0.06 -> 2/40
+Final: 23/100 -> REJECTED
+
+Processing: random_13.jpg
+  Rule 1 (Metadata):  Size ratio 0.12, Dims 3000x4500 vs 4000x6000 (sim 0.75), AR sim 1.00 -> 17/30
+  Rule 2 (Histogram): Histogram correlation -0.155 -> 0/30
+  Rule 3 (Template):  Match score 0.40 -> 16/40
+Final: 33/100 -> REJECTED
+
+Processing: random_14.jpg
+  Rule 1 (Metadata):  Size ratio 0.45, Dims 2400x3600 vs 2000x3000 (sim 0.83), AR sim 1.00 -> 21/30
+  Rule 2 (Histogram): Histogram correlation -0.122 -> 0/30
+  Rule 3 (Template):  Match score 0.12 -> 4/40
+Final: 25/100 -> REJECTED
+
+Processing: random_noise_00.jpg
+  Rule 1 (Metadata):  Size ratio 0.11, Dims 256x256 vs 2000x3000 (sim 0.11), AR sim 0.67 -> 4/30
+  Rule 2 (Histogram): Histogram correlation nan -> 0/30
+  Rule 3 (Template):  Match score 0.02 -> 0/40
+Final: 4/100 -> REJECTED
+
+Processing: random_noise_01.jpg
+  Rule 1 (Metadata):  Size ratio 0.11, Dims 256x256 vs 2000x3000 (sim 0.11), AR sim 0.67 -> 4/30
+  Rule 2 (Histogram): Histogram correlation nan -> 0/30
+  Rule 3 (Template):  Match score 0.02 -> 0/40
+Final: 4/100 -> REJECTED
+
+Processing: random_noise_02.jpg
+  Rule 1 (Metadata):  Size ratio 0.11, Dims 256x256 vs 2000x3000 (sim 0.11), AR sim 0.67 -> 4/30
+  Rule 2 (Histogram): Histogram correlation nan -> 0/30
+  Rule 3 (Template):  Match score 0.02 -> 0/40
+Final: 4/100 -> REJECTED
+
+Processing: random_noise_03.jpg
+  Rule 1 (Metadata):  Size ratio 0.11, Dims 256x256 vs 2000x3000 (sim 0.11), AR sim 0.67 -> 4/30
+  Rule 2 (Histogram): Histogram correlation nan -> 0/30
+  Rule 3 (Template):  Match score 0.02 -> 0/40
+Final: 4/100 -> REJECTED
+
+Processing: random_noise_04.jpg
+  Rule 1 (Metadata):  Size ratio 0.11, Dims 256x256 vs 2000x3000 (sim 0.11), AR sim 0.67 -> 4/30
+  Rule 2 (Histogram): Histogram correlation nan -> 0/30
+  Rule 3 (Template):  Match score 0.02 -> 0/40
+Final: 4/100 -> REJECTED
+
+============================================================
+SUMMARY (V1)
+============================================================
+Modified Accuracy: 59/60 = 98.3%
+Random False Positive Rate: 0/15 = 0.0%
+============================================================

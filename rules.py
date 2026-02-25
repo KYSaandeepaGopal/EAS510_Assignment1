@@ -120,95 +120,86 @@ def rule2_histogram(target_info, input_path):
     return score, fired, evidence
 
 def rule3_template(target_info, input_path):
-    """
-    Rule 3: Template matching (cv2.matchTemplate) to detect if one image is contained in another.
-    Output matches required format:
-      evidence like: "Match score 0.76"
-      score out of 40
+    target_path = target_info["path"]
 
-    Returns:
-      score (int): 0..40
-      fired (bool)
-      evidence (str)
+    if not os.path.exists(target_path) or not os.path.exists(input_path):
+        return 0, False, "Missing file"
+
+    A = cv2.imread(target_path, cv2.IMREAD_GRAYSCALE)  # original
+    B = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)   # modified
+    if A is None or B is None:
+        return 0, False, "Could not load image(s)"
+
+    hA, wA = A.shape[:2]
+    hB, wB = B.shape[:2]
+
+    # Template must be smaller than search in both dims
+    if hB <= hA and wB <= wA:
+        template, search = B, A
+    elif hA <= hB and wA <= wB:
+        template, search = A, B
+    else:
+        return 0, False, "No valid containment"
+
+    res = cv2.matchTemplate(search, template, cv2.TM_CCOEFF_NORMED)
+    _, max_val, _, _ = cv2.minMaxLoc(res)
+
+    sim = max(0.0, min(1.0, float(max_val)))
+    score = int(sim * 40)
+    fired = sim >= 0.55  # slightly stricter than before
+    evidence = f"Match score {sim:.2f}"
+    return score, fired, evidence
+
+def rule4_orb(target_info, input_path):
+    """
+    Rule 4 (ORB keypoints): robust to resize + compression.
+    Score: 0..30 points
+    Evidence: "ORB good matches X/Y"
     """
     target_path = target_info["path"]
 
-    # Safety checks
-    if not os.path.exists(target_path):
-        return 0, False, "Target missing"
-    if not os.path.exists(input_path):
-        return 0, False, "Input missing"
+    if not os.path.exists(target_path) or not os.path.exists(input_path):
+        return 0, False, "Missing file"
 
-    # Load images (grayscale for template matching)
-    target_img = cv2.imread(target_path, cv2.IMREAD_GRAYSCALE)
-    input_img = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)
-
-    if target_img is None or input_img is None:
+    img_t = cv2.imread(target_path, cv2.IMREAD_GRAYSCALE)
+    img_i = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)
+    if img_t is None or img_i is None:
         return 0, False, "Could not load image(s)"
 
-    th, tw = target_img.shape[:2]
-    ih, iw = input_img.shape[:2]
+    # ORB detector (interpretable feature matching)
+    orb = cv2.ORB_create(nfeatures=800)
 
-    # Decide which is template and which is search image
-    # Template MUST be smaller than (or equal to) the search image in both dims.
-    if th <= ih and tw <= iw:
-        template = target_img
-        search = input_img
-    elif ih <= th and iw <= tw:
-        template = input_img
-        search = target_img
-    else:
-        # Fallback: take a centered patch from the larger image as the template
-        # so template always fits. This keeps the rule from crashing.
-        if th * tw >= ih * iw:
-            big = target_img
-            small_h, small_w = ih, iw
-        else:
-            big = input_img
-            small_h, small_w = th, tw
+    kp1, des1 = orb.detectAndCompute(img_t, None)
+    kp2, des2 = orb.detectAndCompute(img_i, None)
 
-        # Patch is 80% of the smaller image size
-        patch_h = max(20, int(0.8 * small_h))
-        patch_w = max(20, int(0.8 * small_w))
+    if des1 is None or des2 is None or len(kp1) < 10 or len(kp2) < 10:
+        return 0, False, "ORB insufficient keypoints"
 
-        bh, bw = big.shape[:2]
-        y0 = max(0, (bh - patch_h) // 2)
-        x0 = max(0, (bw - patch_w) // 2)
+    # Brute-force matcher for ORB (Hamming distance)
+    bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=False)
 
-        template = big[y0:y0 + patch_h, x0:x0 + patch_w]
-
-        # Search is the other image (or the larger one if needed)
-        search = input_img if big is target_img else target_img
-
-        # Ensure template fits; if still not, resize template down
-        sh, sw = search.shape[:2]
-        if template.shape[0] > sh or template.shape[1] > sw:
-            new_w = min(template.shape[1], sw)
-            new_h = min(template.shape[0], sh)
-            template = cv2.resize(template, (new_w, new_h), interpolation=cv2.INTER_AREA)
-
-    # Final guard
-    sh, sw = search.shape[:2]
-    th2, tw2 = template.shape[:2]
-    if th2 > sh or tw2 > sw:
-        return 0, False, "Template larger than target"
-
-    # Template matching
     try:
-        res = cv2.matchTemplate(search, template, cv2.TM_CCOEFF_NORMED)
-        _, max_val, _, _ = cv2.minMaxLoc(res)
+        matches = bf.knnMatch(des1, des2, k=2)
     except cv2.error:
-        return 0, False, "matchTemplate failed"
+        return 0, False, "ORB match failed"
 
-    # Convert to [0,1] similarity for scoring safety
-    sim = float(max_val)
-    sim = max(0.0, min(1.0, sim))
+    # Lowe-style ratio test (keeps matches reliable)
+    good = []
+    for m_n in matches:
+        if len(m_n) != 2:
+            continue
+        m, n = m_n
+        if m.distance < 0.75 * n.distance:
+            good.append(m)
 
-    # Score out of 40
-    score = int(sim * 40)
+    good_count = len(good)
 
-    # Fire threshold (tune if needed)
-    fired = sim >= 0.45
+    # Convert to score out of 30.
+    # Cap at 60 good matches => full points (tune later).
+    score = int(min(1.0, good_count / 500.0) * 30)
 
-    evidence = f"Match score {sim:.2f}"
+    # Fire if enough good matches
+    fired = good_count >= 90
+
+    evidence = f"ORB good matches {good_count}"
     return score, fired, evidence
