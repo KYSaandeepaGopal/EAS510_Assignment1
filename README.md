@@ -62,49 +62,36 @@ Your system should:
 
 
 
-📂 Project Structure
+▶ Running the System
 
-project/
-│
-├── originals/          # Original reference images
-├── modified_images/    # Easy cases
-├── random/             # Unrelated images
-├── hard/               # Combined transformations
-│
-├── forensics_detective.py
-├── rules.py
-├── test_system.py
-│
-├── results_v1.txt, results_v1_hard.txt
-├── results_v2.txt
-└── README.md
+The evaluation script is:
 
-▶ Running the System (V1 and V2)
+test_system.py
 
-test_system.py is the unified evaluation script.
+Run:
 
-Each run evaluates:
+python test_system.py
+
+To save results:
+
+python test_system.py > results.txt
+
+The script evaluates:
 
 modified_images/
 
-random/
-
 hard/
 
+random/
+
 🟢 Phase 1 – Version 1 (V1)
-V1 Rules:
-
-Rule 1 – Metadata (30 pts)
-
-Rule 2 – Histogram (30 pts)
-
-Rule 3 – Template Matching (40 pts)
-
-Total = 100 points
-
-Rule 4 (ORB) does not exist in V1.
-
-V1 Threshold
+Rules Used
+Rule	Description	Points
+Rule 1	Metadata (file size, dimensions, aspect ratio)	30
+Rule 2	Color histogram similarity	30
+Rule 3	Template matching (cv2.matchTemplate)	40
+Total		100
+V1 Threshold Adjustment
 
 Initially:
 
@@ -112,245 +99,150 @@ threshold = 25
 
 This caused some random images to match incorrectly.
 
-To improve robustness and reduce false positives, the threshold was increased to:
+The threshold was increased to:
 
 threshold = 40
 
-This required stronger agreement across rules before declaring a match.
+This made the system more conservative and reduced false positives.
 
-Running V1
+🔴 V1 Failure Analysis (Hard Cases)
 
-Ensure:
+Using the output from the hard/ folder, a systematic weakness was identified.
 
-rule4_orb() is removed from rules.py
+Observed Failure Pattern
 
-No Rule 4 import or scoring exists in forensics_detective.py
+V1 struggled with:
 
-Scoring is 30/30/40
-
-max_possible = 100
-
-Then run:
-
-python test_system.py > results_v1.txt
-
-This evaluates modified, random, and hard folders in one execution.
-
-Hard-case failures are identified by inspecting the hard/ section of results_v1.txt.
-
-🔴 V1 Hard-Case Analysis (Systematic Failure Pattern)
-1️⃣ Observed Weakness in V1: What failed and why?
-
-V1 struggles most on hard cases involving:
-
-Resize / scale changes
+Resize transformations
 
 Rotation
 
 Crop + resize combinations
 
-Resize + compression
+Resize + compression combinations
 
-The primary failure occurs in Rule 3 (Template Matching).
+Why?
 
-Template matching is:
+Rule 3 (Template Matching) is:
 
-Not scale-invariant
+Not scale invariant
 
-Not rotation-invariant
+Not rotation invariant
 
-So when geometry changes, correlation drops significantly.
+Dependent on pixel alignment
 
-Evidence from results_v1.txt:
+When geometry changed, template correlation dropped significantly.
 
-Resize case
+Example
+
+Resize case:
 
 original_00__resize_scale114__compress__q45__v3.jpg
 Rule 3: 0.38 → 15/40
 Final: 67/100
 
-Rotation case
+Rotation case:
 
 original_00__rotate6deg__compress__q35__v4.jpg
 Rule 3: 0.39 → 15/40
 Final: 67/100
 
-Crop + Resize case
+In these cases, histogram similarity remained high, which sometimes caused incorrect or fragile matches.
 
-original_00__crop_keep60__resized__q45__v6.jpg
-Rule 3: 0.12 → 4/40
-Final: 52/100
-
-When Rule 3 weakens, the system relies more heavily on:
-
-Rule 1 (Metadata)
-
-Rule 2 (Histogram)
-
-However, histogram similarity can remain high even for visually similar but incorrect images.
-
-Example incorrect match:
-
-original_02__resize_scale85__compress__q30__v3.jpg
-Rule 2: 0.906 → 27/30
-Rule 3: 0.08 → 3/40
-Final: MATCH to original_01.jpg (Incorrect)
-
-This shows a systematic failure pattern:
-
-Resize/rotation → Template score collapses → Histogram dominates → Wrong candidate can win.
+This revealed a structural weakness in V1.
 
 🔵 Phase 2 – Version 2 (V2)
 
-To address V1’s structural weakness, Rule 4 was added.
+To address the geometric weakness, Rule 4 was introduced.
 
-🟢 Rule 4 – ORB Feature Matching (30 pts)
+🟢 Rule 4 – ORB Feature Matching
 
-ORB (Oriented FAST + Rotated BRIEF) was selected because it:
+ORB (Oriented FAST + Rotated BRIEF) was selected because:
 
-Is more robust to scale changes
+Robust to rotation
 
-Is more robust to rotation
+More robust to scale changes
 
 Handles compression reasonably well
 
-Remains fully interpretable (counts good keypoint matches)
+Remains interpretable (counts good keypoint matches)
 
-ORB Tuning (Final Version)
+V2 Scoring
+Rule	Points
+Rule 1 – Metadata	20
+Rule 2 – Histogram	20
+Rule 3 – Template	30
+Rule 4 – ORB	30
+Total	100
+ORB Tuning
 
-Based on empirical observation of match counts:
-
-Strong matches: 400–800 good matches
-
-Moderate matches: 200–350
-
-Weak/noise: <50
-
-Final scoring:
+Final tuning:
 
 score = int(min(1.0, good_count / 500.0) * 30)
 fired = good_count >= 90
 Why divide by 500?
 
-Previously dividing by 60 caused early saturation (almost every real match got 30/30).
+Earlier scaling caused early saturation (almost all matches got full points).
 Dividing by 500:
 
 Prevents early saturation
 
-Gives partial credit to moderate matches
+Gives proportional scoring
 
-Makes ORB more discriminative
-
-Prevents bias toward structural overconfidence
+Improves discrimination between moderate and strong matches
 
 Why minimum 90 to fire?
 
 Prevents weak structural coincidences
 
-Reduces risk of random false positives
+Reduces false positives
 
 Ensures meaningful feature agreement
 
-V2 Scoring Structure
-Rule	Points
-Rule 1	20
-Rule 2	20
-Rule 3	30
-Rule 4 (ORB)	30
-Total	100
-Running V2
+📈 Effect of V2
 
-Ensure:
+Easy cases remained strong.
 
-Rule 4 exists in rules.py
+Hard cases improved significantly under:
 
-It is imported and applied in forensics_detective.py
+Resize
 
-Scoring is rebalanced to 20/20/30/30
+Rotation
 
-Then run:
+Crop + resize
 
-python test_system.py > results_v2.txt
-📈 Effect of the Change
-Easy Cases (modified_images/)
+ORB provided structural evidence when template matching weakened.
 
-V1 already performed strongly on simple edits:
+⚖ Trade-offs Introduced by Rule 4
 
-Brightness
+Increased computational cost (feature extraction is heavier)
 
-Compression
+Requires careful threshold tuning
 
-Format change
+Sensitive to low-texture images
 
-Moderate cropping
+Introduces additional parameter calibration
 
-V2 preserves this strong performance.
-
-Hard Cases (hard/)
-
-V2 improves robustness on:
-
-Resize cases
-
-Rotation cases
-
-Crop + resize combinations
-
-Where V1 template matching weakened, ORB now provides structural evidence.
-
-Example improvement:
-
-original_00__rotate6deg__compress__q35__v4.jpg
-Rule 3 weak (0.39)
-Rule 4 strong (hundreds of matches)
-Final: Correct match retained
-
-V2 maintains accuracy on easy cases while improving reliability on geometric transformations.
-
-⚖ Trade-Offs Introduced by Rule 4
-
-Adding ORB introduced new considerations:
-
-1️⃣ Increased Runtime
-
-Feature detection and matching increases computational cost compared to metadata and histogram rules.
-
-2️⃣ Sensitivity to Extreme Crops / Low Texture
-
-If an image has very few detectable features, ORB may contribute little evidence.
-
-3️⃣ Need for Careful Threshold Tuning
-
-Poor scaling (e.g., dividing by 60) caused early saturation and biased scoring.
-Proper tuning (500 cap, 90 fire threshold) was necessary to maintain balance.
-
-4️⃣ Additional Parameter Sensitivity
-
-ORB introduces hyperparameters (match thresholds, ratio test), requiring empirical adjustment.
-
-🧠 Key Takeaways:
+🧠 Key Takeaways
 
 Template matching is powerful but fragile under geometric transformations.
-Resize and rotation significantly weaken correlation-based matching.
 
-Histogram similarity alone is insufficient for structural verification.
-Images with similar global color distributions can produce high similarity scores even when structurally different.
+Histogram similarity alone cannot guarantee structural correctness.
 
 Rule-based systems require careful threshold tuning.
-Small changes in scoring thresholds can significantly alter system behavior.
 
-Targeted rule addition (ORB) can systematically address diagnosed weaknesses.
-Instead of replacing the system with machine learning, we added a geometric-robust rule while maintaining interpretability.
+Targeted rule addition (ORB) improved robustness without machine learning.
 
-Maintaining interpretability while improving robustness is possible without machine learning.
-Each rule contributes explainable evidence to the final decision.
+Interpretability was maintained in both versions.
 
 Accuracy depends heavily on threshold selection in both V1 and V2.
 
-In V1, increasing the threshold from 25 to 40 reduced false positives and improved robustness.
+In V1, increasing threshold from 25 → 40 reduced false positives.
 
-In V2, using a threshold of 60 makes the system more conservative.
+In V2, threshold set to 60 makes the system more conservative.
 
-Lowering the threshold in V2 would increase measured accuracy but could reduce reliability and increase false positives.
+Lowering V2 threshold may increase measured accuracy but reduce reliability.
 
-Therefore, accuracy alone is not the sole measure of system quality.
+Therefore:
+
+Accuracy alone is not the only measure of system quality.
